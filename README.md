@@ -36,7 +36,7 @@
   </ol>
 
   <h2>Credits</h2>
-  <p>This app was created by Dinith Heshan as the final year project of my degree.</p>
+  <p>This app was created by Dinith Heshan as the final year project of engineering degree.</p>
 
   <h2>License</h2>
   <p>This project is licensed under the MIT License - see the <a href="https://github.com/DinithHeshan/q-learning-maze-follower-app/blob/master/LICENCE">LICENSE</a> file for details.</p>
