@@ -1660,8 +1660,8 @@ def maze_figure_figure_clickData_function(gridRows_value,gridColumns_value,mazeF
         else:
             return [mazeFullydefined,None]
     elif ctx.triggered_id == 'start-simulation-button':
-        formDynamicMazeSimulation(staticMazeForDynamicSimulation,shortestPathForDynamicSimulation,rewardTableFullydefined,obstacleTable,gridRows_value,gridColumns_value)
-        return [staticMazeForDynamicSimulation,dash.no_update]
+        dynamicMazeSimulation = formDynamicMazeSimulation(staticMazeForDynamicSimulation,shortestPathForDynamicSimulation,rewardTableFullydefined,obstacleTable,gridRows_value,gridColumns_value)
+        return [dynamicMazeSimulation,dash.no_update]
     elif ctx.triggered_id == 'reset-obstacles-button':
         mazeSimulationWithObstacles = go.Figure(mazeSimulationWithoutObstacles)
         shortestPathWithObstacles = shortestPathWithoutObstacles.copy()
@@ -1968,18 +1968,19 @@ def formStaticMazeSimulationWithObstacles(figure,rows,columns,currentShortestPat
 
 
 def formDynamicMazeSimulation(figure,currentShortestPath,currentRewardTable,currentObstacleTable,rows,columns):
+    dynamicFigure = go.Figure(figure)
     for ix in range(columns):
       for iy in range(rows):
-        formDynamicMazeEmptySquareGrid(figure,ix + columns + 1,iy)
+        formDynamicMazeEmptySquareGrid(dynamicFigure,ix + columns + 1,iy)
     for ix in range(columns):
-      formNumericGuides(figure,ix + 0.5 + columns + 1,- 0.5,ix + 1)
-      formNumericGuides(figure,ix + 0.5 + columns + 1,rows + 0.5,ix + 1)
+      formNumericGuides(dynamicFigure,ix + 0.5 + columns + 1,- 0.5,ix + 1)
+      formNumericGuides(dynamicFigure,ix + 0.5 + columns + 1,rows + 0.5,ix + 1)
     for iy in range(rows):
-      formNumericGuides(figure,columns + 0.5 + columns + 1,iy + 0.5,iy + 1)
-    dynamicMazeStaticObject = formDynamicMazeStaticObject(currentShortestPath,currentRewardTable,currentObstacleTable,columns)
-    figure.frames = tuple(go.Frame(data = dynamicMazeStaticObject + [formFilledSquareForFollowerObject(iyx[1] + columns + 1,iyx[0])]) for iyx in currentShortestPath)
-    figure = updateMenus(figure)
-    return figure
+      formNumericGuides(dynamicFigure,columns + 0.5 + columns + 1,iy + 0.5,iy + 1)
+    dynamicFigureStaticObject = formDynamicMazeStaticObject(currentShortestPath,currentRewardTable,currentObstacleTable,columns)
+    dynamicFigure.frames = tuple(go.Frame(data = dynamicFigureStaticObject + [formFilledSquareForFollowerObject(iyx[1] + columns + 1,iyx[0])]) for iyx in currentShortestPath)
+    updateMenus(dynamicFigure)
+    return dynamicFigure
 
 
 def shortestPathCoordinates(rows,columns,currentInitialPoint,currentRewardTable,currentQTable):

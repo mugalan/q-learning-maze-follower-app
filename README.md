@@ -31,7 +31,7 @@
     <li>Train the algorithm by clicking the "Train" button, choosing the number of episodes, and clicking "Start Training".</li>
     <li>Watch the algorithm train in real-time, with the number of trained episodes displayed.</li>
     <li>Select the initial point for the follower by clicking on a square and then clicking the "Set Initial Point" button.</li>
-    <li>Add or remove obstacles by clicking on the squares in the "Obstacle Editor" section.</li>
+    <li>Add or remove obstacles by clicking on the squares in the "Obstacle Editor" section. (Important: Obstacles can only be added to the path which is shown in the static simulation. Once an obstacle is added, the next obstacle can only be added to the path which is taken to avoid the last obstacle.)</li>
     <li>Watch the follower navigate the maze in real-time by clicking the "Simulation" button.</li>
   </ol>
 
