@@ -8,14 +8,16 @@ import plotly.graph_objects as go
 import numpy as np
 
 
-
 Maze_Follower_App = Dash(
     __name__,
     external_stylesheets = [
         dbc.themes.BOOTSTRAP
-    ]
+    ],
+    url_base_pathname='/maze-follower/'
 )
 
+server=Maze_Follower_App.server
+Maze_Follower_App.title='Manager'
 
 
 initializeFigure = go.Figure()
