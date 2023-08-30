@@ -17,7 +17,7 @@ Maze_Follower_App = Dash(
 )
 
 server=Maze_Follower_App.server
-Maze_Follower_App.title='Manager'
+Maze_Follower_App.title='Maze-Follower'
 
 
 initializeFigure = go.Figure()
